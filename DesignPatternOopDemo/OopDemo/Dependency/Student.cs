@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatternOopDemo.OopDemo.BasicClass
+namespace DesignPatternOopDemo.OopDemo.Dependency
 {
     internal class Student
     {
-        private string _description = string.Empty ;
+        private string _description = string.Empty;
         private int _age;
 
         public Student(int id, string name, string description, int age)
@@ -59,9 +59,9 @@ namespace DesignPatternOopDemo.OopDemo.BasicClass
             }
         }
 
-        public void Study()
+        public void Study(Book book)
         {
-            Console.WriteLine($"{Name} is studying");
+            Console.WriteLine($"{Name} is studying {book.Name}");
         }
     }
 }

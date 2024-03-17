@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatternOopDemo.OopDemo.BasicClass
+namespace DesignPatternOopDemo.OopDemo.Association.Bidirectional
 {
     internal class Student
     {
-        private string _description = string.Empty ;
+        private string _description = string.Empty;
         private int _age;
 
         public Student(int id, string name, string description, int age)
@@ -59,9 +59,13 @@ namespace DesignPatternOopDemo.OopDemo.BasicClass
             }
         }
 
-        public void Study()
+        public List<Subject> Subjects { get; private set; }
+
+        public void Study(Subject subject)
         {
-            Console.WriteLine($"{Name} is studying");
+            subject.Student = this;
+            Console.WriteLine($"{Name} is studying {subject.Name}");
+            Subjects.Add(subject);
         }
     }
 }

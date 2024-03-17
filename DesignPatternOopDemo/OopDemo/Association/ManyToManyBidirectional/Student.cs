@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatternOopDemo.OopDemo.BasicClass
+namespace DesignPatternOopDemo.OopDemo.Association.ManyToManyBidirectional
 {
     internal class Student
     {
-        private string _description = string.Empty ;
-        private int _age;
-
+        private string _description = string.Empty;
+        private int _age;        
         public Student(int id, string name, string description, int age)
         {
             Id = id;
@@ -59,9 +59,13 @@ namespace DesignPatternOopDemo.OopDemo.BasicClass
             }
         }
 
-        public void Study()
+        public HashSet<Subject> Subjects { get; private set; }
+
+        public void Study(Subject subject)
         {
-            Console.WriteLine($"{Name} is studying");
+            subject.Students.Add(this);
+            Console.WriteLine($"{Name} is studying {subject.Name}");
+            Subjects.Add(subject);
         }
     }
 }
